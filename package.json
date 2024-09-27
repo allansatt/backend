@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@aws-cdk/aws-apigateway": "^1.38.0",
+    "@aws-cdk/aws-certificatemanager": "^1.37.0",
+    "@aws-cdk/aws-iam": "^1.149.0",
+    "@aws-cdk/aws-route53": "^1.37.0",
+    "@aws-cdk/aws-route53-targets": "^1.37.0",
+    "@aws-cdk/aws-ssm": "^1.37.0",
+    "@aws-cdk/core": "^1.32.2",
+    "oidc-client-ts": "^3.1.0",
+    "react-oidc-context": "^3.2.0"
+  }
+}
