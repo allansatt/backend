@@ -24,7 +24,8 @@ namespace PersonalBackend
                 });
                 UserPool userPool = new UserPool(this, "UserPool", new UserPoolProps{
                     SelfSignUpEnabled= false,
-                    Mfa = Mfa.REQUIRED,
+                    AccountRecovery= AccountRecovery.EMAIL_ONLY,
+                    Mfa = Mfa.OFF,
                     Email = UserPoolEmail.WithSES(new UserPoolSESOptions{
                         FromEmail = $"no-reply@{hostedZone.ZoneName}",
                         ReplyTo = $"no-reply@{hostedZone.ZoneName}",
@@ -38,13 +39,12 @@ namespace PersonalBackend
                         }
                     },
                     MfaSecondFactor = new MfaSecondFactor{
-                        Sms = true,
+                        Sms = false,
                         Otp = true,
                         Email = true
                     },
                     AutoVerify = new AutoVerifiedAttrs{
                         Email = true,
-                        Phone = true
                     },
                     FeaturePlan = FeaturePlan.PLUS,
                     DeviceTracking = new DeviceTracking{
@@ -52,9 +52,8 @@ namespace PersonalBackend
                         DeviceOnlyRememberedOnUserPrompt = true
                     },
                     UserInvitation = new UserInvitationConfig{
-                        EmailSubject = "You've been invited to Allan Satteberg Rivera's Website",
-                        EmailBody = "OTP for {username} {####}",	
-                        SmsMessage = "OTP for {username} {####}"
+                        EmailSubject = "Welcome to allansattelbergrivera.com!",
+                        EmailBody = "Hello {username},\n\nYou've been invited to join fe.allansattelbergrivera.com!\n\nYour temporary password is: {####}\n\nPlease use this login to complete your registration and set up your account.\n\nBest regards,\nAllan Satteberg Rivera",	
                     },
                 });
                 userPool.AddGroup("Admins", new UserPoolGroupOptions{
