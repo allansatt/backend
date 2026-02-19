@@ -17,7 +17,7 @@ cdk.out
 *.sln.docstates
 
 # User-specific files (MonoDevelop/Xamarin Studio)
-*.userprefs
+*.userprefsnv 
 
 # Build results
 [Dd]ebug/
@@ -338,5 +338,6 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 
+.env
 
 # End of https://www.gitignore.io/api/csharp
