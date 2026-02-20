@@ -6,12 +6,12 @@
 
 ## Summary
 
-Authenticated users can upload Ignition hand history files to the S3 bucket "pokerhands" via presigned URLs, have them transcoded to another format (e.g. PokerStars) using the [ignition_hands_converter](https://github.com/allansatt/ignition_hands_converter) Python tool, and use a downloads page to list and download their transcoded files. Job and file metadata are stored in DynamoDB to drive the list API and link uploads to transcoded outputs. All new infrastructure for this feature is provisioned with Terraform.
+Authenticated users can upload Ignition hand history files to the S3 bucket "pokerhands" via presigned URLs, have them transcoded to the open hand history format using the [ignition_hands_converter](https://github.com/allansatt/ignition_hands_converter) Python tool, and use a downloads page to list and download their transcoded files. Job and file metadata are stored in DynamoDB to drive the list API and link uploads to transcoded outputs. All new infrastructure for this feature is provisioned with Terraform.
 
 ## User stories
 
 - **As a** signed-in user, **I want** to receive a presigned URL for the "pokerhands" bucket so that **I can** upload my hand history file directly to storage without sending the file through the API.
-- **As a** signed-in user, **I want** my uploaded file to be transcoded automatically using the ignition_hands_converter tool so that **I can** use it in my preferred hand history format (e.g. PokerStars).
+- **As a** signed-in user, **I want** my uploaded file to be transcoded automatically using the ignition_hands_converter tool so that **I can** use it in the open hand history format.
 - **As a** signed-in user, **I want** a downloads page that lists my transcoded hand histories so that **I can** find and download them.
 - **As a** signed-in user, **I want** to download a transcoded file via a secure, time-limited link so that **I can** retrieve it without exposing storage publicly.
 
@@ -49,7 +49,7 @@ Authenticated users can upload Ignition hand history files to the S3 bucket "pok
 ## Out of scope
 
 - Support for unauthenticated upload or download.
-- Transcoding formats other than those supported by ignition_hands_converter.
+- Transcoding to formats other than the open hand history format.
 - Real-time progress UI for transcoding (polling or webhooks may be in scope; real-time push is out of scope unless added later).
 - Deleting or overwriting existing uploads/transcoded files (no delete/update API in this feature).
 - Public or shareable links to transcoded files; downloads are strictly for the owning user via presigned URLs.
